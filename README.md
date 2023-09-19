@@ -4,11 +4,15 @@
 #### NPM : 2206029052
 #### Kelas : PBP C
 
+
+####TUGAS 2
+
 Link Adaptable : https://galenstore.adaptable.app/main/
 
-
-> 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
-
+<details>
+<summary>
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+</summary>
 - [x] Membuat sebuah proyek Django baru.
 
 Seperti yang sudah diajarkan saat tutorial 0 kemarin, saya harus membuat repositori public di github yang terhubung dengan repositori lokal di laptop. Repositori lokal tersebut berisi proyek aplikasi yang dibuat pada tugas 2 ini. Untuk membuat direktori tersebut, kita harus menggunakan beberapa command seperti :
@@ -48,7 +52,12 @@ Dari berkas urls.py pada direktori main yang sudah dibuat sebelumnya, saya meng-
 
 Langkah terakhir setelah semua step di atas dilakukan adalah melakukan commit dan push ke repositori git yang dibuat sebelumnya. Pertama melakukan command ``git add .`` untuk menandai semua berkas yang akan di track. Kemudian melakukan perintah ``git commit -m "KOMENTAR"`` untuk meng-commit dengan pesan sesuai perubahan yang saya lakukan. Lalu, saya menjalankan perintah ``git remote add origin "URL_REPO"`` untuk menghubungkan repositori lokal dengan repositori yang ada di git. Dan yang terakhir melakukan perintah ``git push -u origin main`` untuk mengirim semua perubahan yang dilakukan ke branch main di repositori git.
 
-> 2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+</details>
+
+<details>
+<summary>
+2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+</summary>
 
 ![Alt Text](Bagan_Nomor_2.png)
 
@@ -57,14 +66,23 @@ Untuk kaitan antara berkas, urutan proses langkahnya sebagai berikut :
     2. urls.py akan menentukan URL dan view mana yang sesuai dengan request dari user.
     3. views.py akan menghandle request dari user sehingga menampilan main.html
     4. Di saat yang bersamaan, views.py menggunakan model yang telah didefinisikan pada models.py untuk memanipulasi data yang diperlukan sehingga dapat merender page yang diinginkan user.
+</details>
 
-> 3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+
+<details>
+<summary>
+3. Jelaskan mengapa kita menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
+</summary>
 
 Virtual Environment (env) itu berguna untuk mengisolasi package dan dependacies yang diinginkan oleh developer sehingga tidak saling bertabrakan dengan konfigurasi proyek-proyek versi lain. *Dependecies* merupakan modul yang yang diperlukan suatu software agar dapat berfungsi termasuk library, framework, atau package dan tiap proyek tersebut pasti memiliki *dependecies* yang berbeda. Selain itu, virtual environment juga memudahkan developer untuk me-manage *dependecies* dengan menginstall dan menghapus modul-modul Python menggunakan pip. Hal tersebut memudahkan developer dalam mengembangkan proyek yang memerlukan banyak *dependecies*. Virtual environment juga membantu untuk mengurangi risiko terinstall modul-modul yang tidak terpercaya.
 
 Tanpa virtual environment, kita dapat tetap membuat aplikasi web berbasis django, tetapi hal tersebut tidak disarankan karena dependencies proyek secara global di Python mungkin terinstall dan akan menyebabkan konflik antar proyek sehingga sulit dikelola. Penggunaan virtual environment merupakan praktik terbaik dalam mengembangkan aplikasi web berbasis django untuk menghindari masalah dependencies sehingga isolasi antar proyek dapat terjadi. 
+</details>
 
-> 4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+<details>
+<summary>
+4. Jelaskan apakah itu MVC, MVT, MVVM dan perbedaan dari ketiganya.
+</summary>
 
 ##### MVC (Model View Controller)
 Model = mengelola data dan mengembalikan operasi berupa logic data kepada controller.
@@ -88,3 +106,35 @@ ViewModel = mengkonversi data dari model sehingga dapat sesuai dengan tampilan y
 MVVM adalah pola desain arsitektur pada software yang umumnya digunakan untuk pengembangan dalam aplikasi yang berbasis GUI. MVVM ini berfokus pada pengembangan aplikasi yang punya tampilan kompleks sehingga perlu untuk memisahkan logika tampilan dari logika bisnis.
 
 Intinya penggunaan dari masing-masing pola desain diatas tergantung pada teknologi yang digunakan dan kebutuhan proyek oleh developer. 
+</details>
+
+####TUGAS 3
+
+<details>
+<summary>
+1. Apa perbedaan antara form POST dan form GET dalam Django?
+</summary>
+
+
+</details>
+
+<details>
+<summary>
+2. Apa perbedaan utama antara XML, JSON, dan HTML dalam konteks pengiriman data?
+</summary>
+
+</details>
+
+<details>
+<summary>
+3. Mengapa JSON sering digunakan dalam pertukaran data antara aplikasi web modern?
+</summary>
+
+</details>
+
+<details>
+<summary>
+4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+</summary>
+
+</details>
