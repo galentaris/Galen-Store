@@ -13,7 +13,8 @@ def show_main(request):
     context = {
         'name': 'Galen Taris Bariqi', # Nama kamu
         'class': 'PBP C', # Kelas PBP kamu
-        'products': products
+        'products': products,
+        'count' : products.count(),
     }
 
     return render(request, "main.html", context)

@@ -263,4 +263,8 @@ e. JSON by ID
 
 - Dan yang terakhir adalah melakukan push ke github dengan command ``add``, ``commit``, dan ``push``
 
+- Menambahkan pesan "Kamu menyimpan X item pada aplikasi ini" (dengan X adalah jumlah data item yang tersimpan pada aplikasi) dan menampilkannya di atas tabel data. Kalimat pesan boleh dikustomisasi sesuai dengan tema aplikasi, namun harus memiliki makna yang sama
+
+Saya menambahkan String kalimat di atas terlebih dahulu pada main.html. Kemudian untuk mendapatkan jumlah produk saya menggunakan methode ``.count()`` pada list products.
+
 </details>
