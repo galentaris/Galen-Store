@@ -10,12 +10,21 @@
     <p>{{class}}</p>
 
     <h5>Kamu menyimpan {{count}} item pada Galen Store</h5>
-    
+    <style>
+        th {
+            padding-top: 20px; /* Menambahkan 20 piksel padding atas */
+            padding-bottom: 20px; /* Menambahkan 20 piksel padding bawah */
+            padding-right: 10px;
+        }
+    </style>
     <table>
         <tr>
             <th>Name</th>
             <th>Price</th>
-            <th>Amount</th>           
+            <th>Amount</th>
+            <th>Tambah</th>
+            <th>Kurang</th>
+            <th>Hapus</th>
             <th>Description</th>
             <th>Date Added</th>
         </tr>
@@ -27,6 +36,27 @@
                 <td>{{product.name}}</td>
                 <td>{{product.price}}</td>
                 <td>{{product.amount}}</td>
+                <td>
+                    <a href="{% url 'main:ubah_product' id=product.id jenis='tambah' %}">
+                        <button>
+                            Tambah Product
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'main:ubah_product' id=product.id jenis='kurang' %}">
+                        <button>
+                            Kurang Product
+                        </button>
+                    </a>
+                </td>
+                <td>
+                    <a href="{% url 'main:ubah_product' id=product.id jenis='hapus' %}">
+                        <button>
+                            Hapus Product
+                        </button>
+                    </a>
+                </td>
                 <td>{{product.description}}</td>
                 <td>{{product.date_added}}</td>
             </tr>
@@ -39,7 +69,7 @@
 
     <a href="{% url 'main:create_product' %}">
         <button>
-            Add New Product
+            Buat Product
         </button>
     </a>
 

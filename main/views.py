@@ -75,6 +75,20 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def ubah_product(request, id, jenis):
+    product = Product.objects.get(user = request.user, pk = id)
+
+    if jenis == "tambah":
+        product.amount += 1
+        product.save()
+    elif jenis == "kurang":
+        product.amount -= 1
+        product.save()
+    elif jenis == "hapus":
+        product.delete()
+
+    return redirect('main:show_main')
+
 def show_xml(request):
     data = Product.objects.all()
     return HttpResponse(serializers.serialize("xml", data), content_type="application/xml")

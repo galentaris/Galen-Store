@@ -358,9 +358,9 @@ kemudian, saya membuat fungsi logout di ``views.py`` yang berguna untuk menghapu
 - Membuat dua akun pengguna dengan masing-masing tiga dummy data menggunakan model yang telah dibuat pada aplikasi sebelumnya untuk setiap akun di lokal.
 
 Saya membuat dua akun dengan kriteria berikut : 
-a. Username = galenb, password = Tesgalen123
+1. Username = galenb, password = Tesgalen123
 dengan tiga dummy data nama produknya Fanta, Sprite, Coca cola
-b. Username = Tesakun, password = Tesakun23
+2. Username = tesakun, password = akungalen123
 dengan tiga dummy data nama produknya Tes1, Tes2, Tes3
 
 - Menghubungkan model Item dengan User.
