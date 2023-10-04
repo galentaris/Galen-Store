@@ -1,9 +1,11 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block content %}
 
 <style>
-    .add-custom {
+    .edit-custom {
     background: #21aea2;
     }
 
@@ -26,7 +28,7 @@
     }
 </style>
 
-<section class="Add add-custom">
+<section class="Edit edit-custom">
     <div class="container py-5 h-100">
       <div class="row justify-content-center align-items-center h-100">
         <div class="col-12 col-lg-9 col-xl-7">
@@ -41,7 +43,7 @@
                         <tr>
                             <td></td>
                             <td>
-                                <input type="submit" value="Add Product"/>
+                                <input type="submit" class="btn btn-primary" type="submit" value="Edit Product"/>
                             </td>
                         </tr>
                     </table>
@@ -56,7 +58,5 @@
       </div>
     </div>
   </section>
-
-
 
 {% endblock %}

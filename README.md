@@ -390,3 +390,105 @@ Agar nama pada main page menjadi dinamis (tergantung username yang terotorisasi)
 - Melakukan add, commit, dan push ke repositori github yang saya buat pada branch baru. 
 
 </details>
+
+#### TUGAS 5
+
+<details>
+<summary>
+1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya?
+</summary>
+
+Berikut contoh element selector dan manfaatnya :
+1. Element Selector
+Manfaatnya = selector yang paling general sehingga elemen dapat memilih semua elemen dengan tipe yang cocok
+Penggunaannya saat ingin menerapkan gaya elemen HTML yang general ke semua elemen dengan tipe yang sama
+
+2. Class Selector
+Manfaatnya = Memungkinkan untuk memilih elemen sesuai kelas yang diterapkan pada kode
+Penggunaannya adalah saat ingin menerapkan gaya elemen HTML secara khusus hanya pada elemen yang dituju
+
+3. ID Selector
+Manfaatnya = Memungkinkan untuk memilih elemen berdasarkan ID unique secara spesifik ke ID elemen tersebut
+Penggunaannya saat ingin menerapkan gaya elemen HTML terhadap satu elemen tertentu
+
+4. Pseudo-class Selector
+Manfaatnya = Memungkinkan untuk memilih elemen berdasarkan suatu condition tertentu
+Penggunaannya seperti contoh pada bonus tugas 5 ini, saya menggunakan pseudo-class selector untuk memudahkan saya dalam memberikan warna pada row terakhir di list product. Condition yang digunakan adalah last-child.
+
+5. Pseudo-element Selector
+Manfaatnya = Memungkinkan untuk memodifikasi elemen sehingga desain web saya menjadi lebih fleksibel.
+Penggunaannya saat ingin menambahkan suatu elemen ke dalam elemen yang sudah ada seperti menambahkan ikon ke teks.
+</details>
+
+<details>
+<summary>
+2. Jelaskan HTML5 Tag yang kamu ketahui.
+</summary>
+
+HTML5 tag adalah bahasa markup HTML yang digunakan untuk membuat dan merancang elemen dari web. Berikut contoh HTML5 tag :
+
+1. nav
+Tag tersebut digunakan untuk membuat navigation bar seperti pada tugas 5 yang saya buat ini sehingga dapat membantu dalam memberikan konteks tentang bagian halaman mana yang berisi menu.
+
+2. input
+Untuk memudahkan dalam pengambilan input dari pengguna seperti username dll.
+
+3. section
+Untuk mengelompokkan elemen-elemen pada web menjadi satu unit sehingga dapat membantu dalam mengatur halaman web menjadi bagian-bagian yang lebih besar.
+
+4. header
+Untuk menandai bagian atas dari suatu laman pada web dan digunakan untuk title, logo, dll.
+
+5. footer
+Untuk menandai bagian bawah dari suatu laman pada web dan biasanya digunakan untuk informasi kontak, dll.
+
+</details>
+
+<details>
+<summary>
+3. Jelaskan perbedaan antara margin dan padding.
+</summary>
+
+Margin dan padding sama-sama untuk mengatur posisi dari suatu elemen HTML dan memberikan *space* antara elemen-elemen tersebut.
+
+Berikut perbedaan dari margin dan padding :
+1. Margin
+Margin = Jarak antara batas terluar dari elemen-elemen sekitar sehingga dapat mengontrol kedekatan jarak tiap elemen. Margin tidak punya warna dan hanya merupakan *whitespace* yang tidak memengaruhi ukuran sebenarnya dari elemen tersebut. Contoh penggunaan margin : margin-top, margin-bottom, dll
+
+2. Padding
+Padding = Jarak antara batas dalam dari elemen-elemen sekitar sehingga fungsinya sama dengan margin untuk mengontrol jarak tiap elemen. Bedanya, padding dapat memiliki background di sekitar elemen. Dan padding juga memengaruhi ukuran asli dari elemen yang dituju sehingga akan memperluas elemen tersebut ke luar dari batasnya. Contoh penggunaan padding : padding-top, padding-bottom, dll.
+
+</details>
+
+<details>
+<summary>
+4. Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+</summary>
+
+1. Bootstrap
+Merupakan template yang menyediakan beberapa gaya elemen HTML yang mencakup UI seperti tombol, form, dll. Bootstrap itu sendiri memiliki desain yang konsisten dan mudah diakses sehingga cocok digunakan untuk mempermudah pengembang web. Tema dari template bootstrap tersebut dapat disesuaikan kembali sesuai dengan desain yang diinginkan. Akan tetapi, proses rendering situs web dan ukuran filenya lebih besar dibanding Tailwind.
+Bootstrap digunakan saat ingin membuat situs web secara cepat dan singkat sehingga dapat memanfaatkan komponen-komponen yang sudah jadi dan siap pakai.
+
+2. Tailwind
+Merupakan metode framework css yang menggunakan utilitas berupa pembangunan desain situs web dengan menggabungkan beberapa kelas. Berbeda dengan bootstrap, tailwind memungkinkan pengembang untuk melakukan kustomisasi yang tinggi sehingga desain dari situs web tersebut dapat dikonfigurasi sesuai dengan keinginannya. Ukuran file dan proses rendering situs web dari Tailwind juga lebih kecil dibanding Bootstrap. Akan tetapi, tailwind kurang ramah bagi pemula karena diharuskan untuk mendesain situs web dari awal.
+Tailwind digunakan saat pengembang menginginkan kustomisasi tingkat tinggi dari situs web dan saat ingin menggunakan kelas utilitas. Tailwind juga digunakan saat pengembang ingin menghindari overbloat pada CSS. 
+
+
+</details>
+
+<details>
+<summary>
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+</summary>
+
+- Kustomisasi desain pada templat HTML yang telah dibuat pada Tugas 4 dengan menggunakan CSS atau CSS framework (seperti Bootstrap, Tailwind, Bulma) dengan ketentuan sebagai berikut
+
+Saya menggunakan bootstrap untuk semua page login, register, dan tambah inventori, tetapi dengan kombinasi css standar dan kustomisasi saya agar menyesuaikan desain yang saya mau. Pada login page saya hanya menggunakan css dengan inline style. Dan pada page register, main, dan tambah product saya menggunakan internal styling.
+
+Semua tampilan saya memiliki warna yang senada dengan halaman utama. Saya juga menambahkan Navigation bar pada main page untuk memudahkan pengguna jika ingin melakukan proses logout dan melihat informasi username serta last login.
+
+Pada main page, saya mengimplementasikan card dengan menggunakan bootstrap dan kombinasi css standar kemudian memasukkan image dan beberapa informasi produk tersebut. Untuk menampilkan banyak item di card tersebut, saya menggunakan for each loop pada list product.
+
+- Melakukan add-commit-push ke GitHub.
+
+</details>

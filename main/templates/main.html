@@ -1,82 +1,179 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Galen Store</h1>
-
-    <h5>Username:</h5>
-    <p>{{name}}</p>
-
-    <h5>Class:</h5>
-    <p>{{class}}</p>
-
-    <h5>Kamu menyimpan {{count}} item pada Galen Store</h5>
     <style>
-        th {
-            padding-top: 20px; /* Menambahkan 20 piksel padding atas */
-            padding-bottom: 20px; /* Menambahkan 20 piksel padding bawah */
-            padding-right: 10px;
+        .main-custom {
+            background: #150e64c4;
+        }
+        .card-product {
+            width: 900px;
+            height: 550px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px;
+            margin-left: 170px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap : 20px
+        }
+        .btn_create {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .table1 {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        tr:last-child td { 
+            background-color: #d14545;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
         }
     </style>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Amount</th>
-            <th>Tambah</th>
-            <th>Kurang</th>
-            <th>Hapus</th>
-            <th>Description</th>
-            <th>Date Added</th>
-        </tr>
 
-        {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+    <nav class="navbar" style="background-color: #21aea2;">
+        <div class="container-fluid">
+            <h1>Galen Store</h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <p>Username: {{name}}</p>
+                <hr class="my-0" />
+                <p>Total item disimpan sebanyak: {{count}}</p>
+                <hr class="my-0" />
+                <p>Sesi terakhir login: {{ last_login }}</p>
+                <hr class="my-0" />
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:logout' %}" style="color: rgb(193, 19, 19)">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
+    <div class="container py-5 px-5">
         {% for product in products %}
-            <tr>
-                <td>{{product.name}}</td>
-                <td>{{product.price}}</td>
-                <td>{{product.amount}}</td>
-                <td>
-                    <a href="{% url 'main:ubah_product' id=product.id jenis='tambah' %}">
-                        <button>
-                            Tambah Product
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <a href="{% url 'main:ubah_product' id=product.id jenis='kurang' %}">
-                        <button>
-                            Kurang Product
-                        </button>
-                    </a>
-                </td>
-                <td>
-                    <a href="{% url 'main:ubah_product' id=product.id jenis='hapus' %}">
-                        <button>
-                            Hapus Product
-                        </button>
-                    </a>
-                </td>
-                <td>{{product.description}}</td>
-                <td>{{product.date_added}}</td>
-            </tr>
+            <div class="card-product">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
+                            data-mdb-ripple-color="light">
+                            <img src= "{{product.image}}" width="600px"
+                            style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"/>
+                        </div>
+                        <div class="card-body pb-0">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p class="text-dark">{{product.name}}</a></p>
+                                    <p class="small text-muted">{{product.description}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body pb-0">
+                            <div class="d-flex justify-content-between">
+                                <p class="text-dark">{{product.price}}</p>
+                                <p class="small text-muted">{{product.amount}}</p>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
+                                <a href="{% url 'main:edit_product' product.id %}">
+                                    <button type="button" class="btn btn-primary">Edit Product</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         {% endfor %}
-    </table>
 
-    <h5>Sesi terakhir login: {{ last_login }}</h5>
+    </div>
 
-    <br />
 
-    <a href="{% url 'main:create_product' %}">
-        <button>
-            Buat Product
-        </button>
-    </a>
 
-    <a href="{% url 'main:logout' %}">
-        <button>
-            Logout
-        </button>
-    </a>
+
+    <section class="main">
+        <table class="table1">
+            <thead style="background-color: #ddd;">
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Tambah</th>
+                    <th>Kurang</th>
+                    <th>Hapus</th>
+                    <th>Edit Product</th>
+                    <th>Description</th>
+                    <th>Date Added</th>
+                </tr>
+            </thead>
+
+            {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+
+            {% for product in products %}
+                <tr>
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.amount}}</td>
+                    <td>
+                        <a href="{% url 'main:ubah_product' id=product.id jenis='tambah' %}">
+                            <button type="button" class="btn btn-primary">
+                                Tambah Product
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'main:ubah_product' id=product.id jenis='kurang' %}">
+                            <button type="button" class="btn btn-primary">
+                                Kurang Product
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'main:ubah_product' id=product.id jenis='hapus' %}">
+                            <button type="button" class="btn btn-primary">
+                                Hapus Product
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{% url 'main:edit_product' product.id %}">
+                            <button  type="button" class="btn btn-primary">
+                                Edit
+                            </button>
+                        </a>
+                    </td>
+                    <td>{{product.description}}</td>
+                    <td>{{product.date_added}}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br />
+
+        <div class="btn-create">
+            <a href="{% url 'main:create_product' %}">
+                <button type="button" class="btn btn-primary">
+                    Buat Product
+                </button>
+            </a>
+        </div>
+
+       
+
+    </section>
 
 {% endblock content %}
