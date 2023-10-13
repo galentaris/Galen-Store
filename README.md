@@ -499,11 +499,16 @@ Pada main page, saya mengimplementasikan card dengan menggunakan bootstrap dan k
 <summary>
 1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
 </summary>
-Synchronous programming.
-1. Kode dieksekusi secara berurutan. Setiap perintah harus menunggu perintah sebelumnya selesai sebelum mulai dieksekusi.
 
-Asynchronous programming
-1. Perintah dieksekusi bersamaan tanpa harus menunggu tugas sebelumnya selesai. Tugas-tugas yang mungkin membutuhkan waktu seperti permintaan jaringan atau operasi disk dapat dijalankan secara paralel.
+**Synchronous programming**
+1. Kode dieksekusi secara berurutan. Setiap perintah harus menunggu perintah sebelumnya selesai sebelum mulai dieksekusi.
+2. Perintah yang memakan waktu cukup lama akan stop untuk menunggu perintah tersebut selesai. Hal ini dapat mengakibatkan website terasa lambat atau tidak responsif.
+3. Pemanggilan fungsi biasanya dilakukan secara langsung dan jika ada kesalahan, program bisa segera menanggapinya.
+
+**Asynchronous programming**
+1. Perintah dieksekusi bersamaan tanpa harus menunggu perintah sebelumnya selesai. Setiap perintah dapat dijalankan secara paralel.
+2. Perintah yang memakan waktu cukup lama tidak stop sehingga dapat melanjutkan eksekusi dan menangani Perintah lainnya sambil menunggu perintah asinkronus lainnya selesai. Hal ini menjadikan website lebih responsif dan efisien.
+3. Pemanggilan fungsi dalam pemrograman asinkron sering melibatkan penggunaan callback. Pengembang mengirimkan fungsi callback sebagai argumen ke fungsi asinkron dan fungsi callback ini akan dipanggil setelah perintah asinkronus selesai.
 
 </details>
 
@@ -512,7 +517,9 @@ Asynchronous programming
 2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
 </summary>
 
+Paradigma event-driven programming adalah pendekatan pemrograman di mana program dirancang untuk merespon terhadap *event* tertentu yang terjadi. *Event* ini bisa berasal dari berbagai sumber, termasuk tindakan pengguna, perubahan data, atau kondisi lain yang memicu respon dari program. Program tidak dijalankan secara linier dari awal hingga akhir. Sebaliknya, program selalu dalam keadaan siap untuk merespons *event* yang terjadi. Ketika suatu *event* terdeteksi, program akan menjalankan tindakan atau fungsi yang sesuai yang telah ditetapkan sebelumnya.
 
+Contoh penerapan pada tugas ini adalah saya membuat button untuk menghubungkan ke url fungsi add_product_ajax. Dari button tersebut, pengguna bisa memberikan suatu respon berupa click terhadap tombol tersebut. Saya menggunakan AJAX untuk mengambil data dari server tanpa perlu *refresh page*.
 
 </details>
 
@@ -521,7 +528,7 @@ Asynchronous programming
 3. Jelaskan penerapan asynchronous programming pada AJAX.
 </summary>
 
-
+AJAX memungkinkan dan memang dirancang khusus untuk komunikasi secara *asynchronous* dengan server web. Dengan AJAX, browser web dapat mengirim permintaan HTTP ke server dan menerima respons tanpa harus menghentikan eksekusi program. Fungsi callback yang didefinisikan akan dieksekusi ketika permintaan ke server selesai. Misalnya, fungsi callback didefinisikan untuk menangani data yang diterima dari server setelah permintaan selesai. Ini memungkinkan Anda untuk menjalankan tugas lain sambil menunggu respons dari server. 
 
 </details>
 
@@ -530,6 +537,15 @@ Asynchronous programming
 4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
 </summary>
 
+**Fetch API**
+1. Fetch API diterapkan sebagai fungsi bawaan di browser modern untuk melalukan permintaan HTTP. Ini berarti pengembang tidak perlu mengunduh atau mengimpor library eksternal tambahan.
+2. Menggunakan konsep Promise yang membuat kode lebih bersih dan mudah diikuti dan memudahkan dalam operasi *asynchronous*.
+3. Mendukung JSON secara alami yang sering digunakan dalam aplikasi web modern serta biasanya lebih cepat dan responsif dalam pengambilan data dari server.
+
+**JQuery**
+1. JQuery dirancang untuk mengatasi masalah kompatibilitas lintas browser sehingga lebih cocok untuk pengembangan di browser yang lebih tua.
+2. Menggunakan callback yang dapat menghasilkan kode yang lebih sulit dipahami jika digunakan dalam kasus yang lebih rumit.
+3. Memiliki ekosistem plugin yang luas yang menyediakan banyak fitur tambahan dan komponen siap pakai, tetapi membuatnya menjadi lebih berat jika dibandingkan dengan Fetch API.
 
 
 </details>
