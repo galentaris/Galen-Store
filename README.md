@@ -471,7 +471,7 @@ Bootstrap digunakan saat ingin membuat situs web secara cepat dan singkat sehing
 
 2. Tailwind
 Merupakan metode framework css yang menggunakan utilitas berupa pembangunan desain situs web dengan menggabungkan beberapa kelas. Berbeda dengan bootstrap, tailwind memungkinkan pengembang untuk melakukan kustomisasi yang tinggi sehingga desain dari situs web tersebut dapat dikonfigurasi sesuai dengan keinginannya. Ukuran file dan proses rendering situs web dari Tailwind juga lebih kecil dibanding Bootstrap. Akan tetapi, tailwind kurang ramah bagi pemula karena diharuskan untuk mendesain situs web dari awal.
-Tailwind digunakan saat pengembang menginginkan kustomisasi tingkat tinggi dari situs web dan saat ingin menggunakan kelas utilitas. Tailwind juga digunakan saat pengembang ingin menghindari overbloat pada CSS. 
+Tailwind digunakan saat pengembang menginginkan kustomisasi tingkat tinggi dari situs web dan saat ingin menggunakan kelas utilitas. Tailwind juga digunakan saat pengembang ingin menghindari overbloat pada 
 
 
 </details>
@@ -490,5 +490,121 @@ Semua tampilan saya memiliki warna yang senada dengan halaman utama. Saya juga m
 Pada main page, saya mengimplementasikan card dengan menggunakan bootstrap dan kombinasi css standar kemudian memasukkan image dan beberapa informasi produk tersebut. Untuk menampilkan banyak item di card tersebut, saya menggunakan for each loop pada list product.
 
 - Melakukan add-commit-push ke GitHub.
+
+</details>
+
+#### TUGAS 6
+
+<details>
+<summary>
+1. Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+</summary>
+Synchronous programming.
+1. Kode dieksekusi secara berurutan. Setiap perintah harus menunggu perintah sebelumnya selesai sebelum mulai dieksekusi.
+
+Asynchronous programming
+1. Perintah dieksekusi bersamaan tanpa harus menunggu tugas sebelumnya selesai. Tugas-tugas yang mungkin membutuhkan waktu seperti permintaan jaringan atau operasi disk dapat dijalankan secara paralel.
+
+</details>
+
+<details>
+<summary>
+2. Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+</summary>
+
+
+
+</details>
+
+<details>
+<summary>
+3. Jelaskan penerapan asynchronous programming pada AJAX.
+</summary>
+
+
+
+</details>
+
+<details>
+<summary>
+4. Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+</summary>
+
+
+
+</details>
+
+<details>
+<summary>
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+</summary>
+
+**Mengubah tugas 5 yang telah dibuat sebelumnya menjadi menggunakan AJAX.**
+
+Saya mengubah kode menjadi AJAX pada bagian cards item dan form untuk add product. 
+- Cards item
+Pertama-tama, saya memindahkan bootstrap card product yang ada pada container ke dalam script dan memasukkannya dalam function ``cardProducts()``. Dan fungsi tersebut saya panggil di dalam fungsi ``refreshProducts()`` agar card item tersebut ikut ke *update* secara otomatis saat user menambahkan product. Berikut contoh kode container dan function cardProducts : 
+```
+<div class="container py-5 px-5">
+    <!-- Kode untuk menampilkan card product -->
+</div>
+
+<script>
+...
+async function cardProducts() {
+    const products = await getProducts()
+
+    const container = document.querySelector('.container');
+
+    let productHTML = '';
+
+    products.forEach(product => {
+        productHTML += `
+            <div class="card-product">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="bg-image hover-overlay ripple ripple-surface ripple-surface-light"
+                            data-mdb-ripple-color="light">
+                            <img src="${product.fields.image}" width="600px"
+                                style="border-top-left-radius: 15px; border-top-right-radius: 15px;" class="img-fluid"/>
+                        </div>
+                        <div class="card-body pb-0">
+                            <div class="d-flex justify-content-between">
+                                <div>
+                                    <p class="text-dark">${product.fields.name}</p>
+                                    <p class="small text-muted">${product.fields.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body pb-0">
+                            <div class="d-flex justify-content-between">
+                                <p class="text-dark">${product.fields.price}</p>
+                                <p class="small text-muted">${product.fields.amount}</p>
+                            </div>
+                        </div>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center pb-2 mb-1">
+                                <a href="/edit_product/${product.id}">
+                                    <button type="button" class="btn btn-primary">Edit Product</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+
+    container.innerHTML = productHTML;
+}
+...
+</script>
+```
+
+- Add product
+Pada bagian add product, saya membuat function di berkas ``views.py`` bernama get_product_json untuk menampilkan product menggunakan fetch. Kemudian pada berkas yang sama saya juga saya membuat function add_product_ajax untuk menyimpan product yang ditambahkan oleh pengguna. Saya menambahkan path ke urls.py di direktori ``main``. Pada ``main.html``, saya mengubah bagian table dengan menggunakan script dan menambahkan function dalam content tersebut bernama getProducts(), refreshProducts, dan addProduct(). Dan yang terakhir, saya menggunakan bootstrap untuk menampilkan formnya.
+
 
 </details>

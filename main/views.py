@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseNotFound, HttpResponseRedirect
 from main.forms import ProductForm
 from django.urls import reverse
 from main.models import Product
@@ -14,6 +14,7 @@ from django.contrib.auth.decorators import login_required
 import datetime
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 @login_required(login_url='/login')
@@ -29,6 +30,37 @@ def show_main(request):
     }
 
     return render(request, "main.html", context)
+
+def get_product_json(request):
+    product_item = Product.objects.filter(user=request.user)
+    return HttpResponse(serializers.serialize('json', product_item))
+
+@csrf_exempt
+def add_product_ajax(request):
+    if request.method == 'POST':
+        name = request.POST.get("name")
+        price = request.POST.get("price")
+        description = request.POST.get("description")
+        image = request.POST.get("image")
+        amount = request.POST.get("amount")
+        user = request.user
+
+        new_product = Product(name=name, price=price, description=description, user=user, image= image, amount=amount)
+        new_product.save()
+
+        return HttpResponse(b"CREATED", status=201)
+
+    return HttpResponseNotFound()
+
+@csrf_exempt
+def delete_product_ajax(request, id):
+    if request.method == 'DELETE':
+        product = Product.objects.get(user = request.user, pk = id)
+        product.delete()
+        
+        return HttpResponse(redirect("main:show_main"))
+
+    return HttpResponseNotFound()
 
 def create_product(request):
     form = ProductForm(request.POST or None)
@@ -93,7 +125,6 @@ def edit_product(request, id):
 def ubah_product(request, id, jenis):
     product = Product.objects.get(user = request.user, pk = id)
 
-
     if jenis == "tambah":
         product.amount += 1
         product.save()
@@ -101,7 +132,7 @@ def ubah_product(request, id, jenis):
         product.amount -= 1
         product.save()
     elif jenis == "hapus":
-        product.delete()
+        product.delete()    
 
     if product.amount < 0:
         product.delete()
